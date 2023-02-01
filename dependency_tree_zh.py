@@ -1,4 +1,6 @@
 import spacy
+from spacy.tokens import Doc
+
 nlp = spacy.load('zh_core_web_sm')
 
 
