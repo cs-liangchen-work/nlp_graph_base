@@ -1,6 +1,19 @@
 import spacy
 nlp = spacy.load('zh_core_web_sm')
 
+
+
+class WhitespaceTokenizer:
+    def __init__(self, vocab):
+        self.vocab = vocab
+
+    def __call__(self, text):
+        words = text.split(" ")
+        return Doc(self.vocab, words=words)
+
+nlp.tokenizer = WhitespaceTokenizer(nlp.vocab)
+
+
 text = "我 来 自 北 京 市 的 北 京 交 通 大 o k"
 text_list = text.split()
 doc = nlp(text)
